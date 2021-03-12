@@ -77,6 +77,47 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ---
 
+# Angular
+
+## Module and Component
+`ng new test` creates `app.module.ts`  
+Generate new module: `ng g m testMod` creates `src/app/test-mod/test-mod.module.ts`  
+Generate new component: `ng g c test-mod/testComp --skipTests -is` creates `src/app/test-mod/test-comp/test-comp.component.ts`  
+(also updates `test-mod.module.ts`)  
+To show testComp in app component first export component in testMod module, then import module in app.module, the show testComp selector in app.component.html, like this:   
+in `test-mod.module.ts` add: `exports:[TestCompComponent]`  
+in `app.module.ts` add: `imports:[TestModModule]`  
+in `app.component.html` add: `<app-test-comp></app-test-comp>`  
+
+## routing 
+app-routing.module.ts - Muestra componente según la ruta  
+-> crear app-routing.module.ts  
+-> import RouterModule.forRoot(routes)  
+-> export RouterModule  
+-> generar const routes: Routes = [ path='',component: xxx ...  
+-> importar AppRoutingModule donde lo vayas a usar  
+-> en html usar <router-outlet></router-outlet>  
+y luego en el sidebar  
+-> importa   
+-> en html referencia:  
+    <li routerLink="region"  
+        routerLinkActive="active"  
+        [routerLinkActiveOptions]="{exact: true}"  
+        class="list-group-item">  
+        Buscar país  
+    </li>  
+```
+const routes: Routes = [{
+        path: '', component: PorPaisComponent, pathMatch: 'full'
+    },{
+        path: 'region', component: PorRegionComponent
+    },{
+        path: 'pais/:id', component: VerPaisComponent
+    }]
+```
+
+---
+
 # GIT
 
 Repository in https://github.com/
@@ -102,7 +143,6 @@ git push --tags
 to convert it to release tag in github.com select the tag, select version, select edit, set name and press "update release"
 
 ---
-
 
 # Notes
 
