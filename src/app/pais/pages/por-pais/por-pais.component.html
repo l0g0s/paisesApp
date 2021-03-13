@@ -15,31 +15,15 @@
 
 <hr>
 
-<div class="alert alert-danger">
-    No se encontró nada con el término ASDFGH
+
+<div *ngIf="hayError" 
+      class="alert alert-danger" >
+    No se encontró nada con el término {{termino}}
 </div>
 
-<div class="row">
+<div *ngIf="!hayError && paises.length>0" class="row">
+
     <div class="col">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th> # </th>
-                    <th> Bandera </th>
-                    <th> Nombre </th>
-                    <th> Población </th>
-                    <th> </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>b</td>
-                    <td>n</td>
-                    <td>p</td>
-                    <td>xx</td>
-                </tr>
-            </tbody>
-        </table>
+        <app-pais-tabla></app-pais-tabla>
     </div>
 </div>

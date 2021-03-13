@@ -79,6 +79,16 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 # Angular
 
+## html way
+` [xxx] ` one way exclusive from back to front - eg.`[name]`
+` (xxx) ` one way exclusive from front to back - eg.`(clic)`
+`[(xxx)]` two way in-out
+## ngIf
+Eg.: `<div *ngIf="hayError"`
+
+## ngFor
+Eg.: `<tr *ngFor="let item of items; let i = index">`
+
 ## Module and Component
 `ng new test` creates `app.module.ts`  
 Generate new module: `ng g m testMod` creates `src/app/test-mod/test-mod.module.ts`  
@@ -90,16 +100,20 @@ in `app.module.ts` add: `imports:[TestModModule]`
 in `app.component.html` add: `<app-test-comp></app-test-comp>`  
 
 ## routing 
-app-routing.module.ts - Muestra componente según la ruta  
--> crear app-routing.module.ts  
--> import RouterModule.forRoot(routes)  
--> export RouterModule  
--> generar const routes: Routes = [ path='',component: xxx ...  
--> importar AppRoutingModule donde lo vayas a usar  
--> en html usar <router-outlet></router-outlet>  
-y luego en el sidebar  
--> importa   
--> en html referencia:  
+- create `app-routing.module.ts` - to show components on route  
+- import special way: `import RouterModule.forRoot(routes)`  
+- and export too: `export RouterModule`  
+- generate routes:  
+``` 
+const routes: Routes = [{ 
+        path: '', component: PorPaisComponent, pathMatch: 'full' 
+    },{ path: 'region', component: PorRegionComponent 
+    },{ path: 'pais/:Code', component: VerPaisComponent }] 
+```
+- import `AppRoutingModule` where its going to be used (or `RouterModule`)  
+- in html use this: `<router-outlet></router-outlet>` where component should appear     
+- if reference in ***sidebar***  
+```
     <li routerLink="region"  
         routerLinkActive="active"  
         [routerLinkActiveOptions]="{exact: true}"  
@@ -107,13 +121,22 @@ y luego en el sidebar
         Buscar país  
     </li>  
 ```
-const routes: Routes = [{
-        path: '', component: PorPaisComponent, pathMatch: 'full'
-    },{
-        path: 'region', component: PorRegionComponent
-    },{
-        path: 'pais/:id', component: VerPaisComponent
-    }]
+- if reference from other ***component***  
+eg.: `<a [routerLink]="['/pais', p.alpha2Code]">Ver...</a>`  
+
+## httpRequests
+In app.module.ts `import HttpClientModule` desde `import { HttpClientModule } from '@angular/common/http';`  
+In ***service*** import httpClient like this: `constructor(private http:HttpClient){`  
+Optional set params eg.:
+```
+    const params = new HttpParams().set('key',this.value)
+``` 
+In function make http GET and then subscript, eg.:  
+```
+    this.http.get<SearchGifsResponse>(`${this.serviceUrl}/search`,{params})
+      .subscribe( (resp) =>{
+        this.resultados = resp.data
+      })  
 ```
 
 ---
@@ -121,7 +144,7 @@ const routes: Routes = [{
 # GIT
 
 Repository in https://github.com/
-- In github create new repository ej.`angular-basicos` https://github.com/l0g0s/angular-basicos.git
+- In github create new repository eg.`angular-basicos` https://github.com/l0g0s/angular-basicos.git
 - In local start/reset repository
 ```
 git init
@@ -179,7 +202,10 @@ https://developers.giphy.com/
 https://developers.giphy.com/docs/api/endpoint#search
 
 ## quicktype.io - convierte de jSON a lo que quieras
-https://quicktype.io/
+https://quicktype.io/  
+- language TypeScript  
+- interfaces only  
+- verify JSON  
 
 ## animate.style - estilos animados para hacer más agradable la vista de la web
 https://animate.style/
