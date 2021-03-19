@@ -4,12 +4,11 @@ import { Country } from '../../interfaces/pais.interface';
 @Component({
   selector: 'app-pais-tabla',
   templateUrl: './pais-tabla.component.html',
-  styles: [
-  ]
+  styles: []
 })
 export class PaisTablaComponent implements OnInit {
 
-  @Input() paises: Country[] = []
+  @Input() tablaPaises: Country[] = []
 
   constructor() { }
 

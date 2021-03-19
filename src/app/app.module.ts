@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { PaisModule } from './pais/pais.module';
 import { AppRoutingModule } from './app-routing.module';
+import { PipesModule } from './pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AppRoutingModule } from './app-routing.module';
     HttpClientModule,
     PaisModule,
     SharedModule,
+    PipesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

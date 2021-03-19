@@ -80,9 +80,24 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 # Angular
 
 ## html way
-` [xxx] ` one way exclusive from back to front - eg.`[name]`
+` [xxx] ` one way exclusive from back to front - eg.`[name]` 
 ` (xxx) ` one way exclusive from front to back - eg.`(clic)`
-`[(xxx)]` two way in-out
+`[(xxx)]` two way in-out - eg. `<input type="text" name="termino" [(ngModel)]="termino" placeholder="Buscar..."/>`
+
+## input - recibe desde otro componente
+en pais-tabla.component  
+`@Input() tablaPaises: Country[] = []`  
+en por-pais.component.html  
+`<app-pais-tabla [tablaPaises]="listaPaises"></app-pais-tabla>`  
+
+## output - envía 
+```
+@Output() onEnter: EventEmitter<string> = new EventEmitter()
+buscar(){
+    this.onEnter.emit( this.termino )
+}
+```
+
 ## ngIf
 Eg.: `<div *ngIf="hayError"`
 
@@ -138,6 +153,11 @@ In function make http GET and then subscript, eg.:
         this.resultados = resp.data
       })  
 ```
+
+## Pipes
+https://angular.io/api?query=pipe
+
+
 
 ---
 
@@ -212,3 +232,16 @@ https://animate.style/
 
 ## restcountries.eu - API paises del mundo
 https://restcountries.eu/#api-endpoints-name
+
+## primeNG - librería de componentes para angular
+https://www.primefaces.org/primeng/
+npm install primeng primeicons
+add in angular.json:
+```
+            "styles": [
+              "src/styles.css",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeng/resources/themes/saga-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css"              
+            ],
+```

@@ -4,6 +4,7 @@ import { PorCapitalComponent } from './pais/pages/por-capital/por-capital.compon
 import { PorPaisComponent } from './pais/pages/por-pais/por-pais.component';
 import { PorRegionComponent } from './pais/pages/por-region/por-region.component';
 import { VerPaisComponent } from './pais/pages/ver-pais/ver-pais.component';
+import { PipesComponent } from './pipes/pipes/pipes.component';
 
 const routes: Routes = [
     {
@@ -19,6 +20,9 @@ const routes: Routes = [
     },{
         path: 'pais/:id',
         component: VerPaisComponent
+    },{
+        path: 'pipes',
+        component: PipesComponent
     },{
         path: '**',
         redirectTo:''

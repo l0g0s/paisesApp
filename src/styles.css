@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body {
+    margin: 5px;
+    background-color: var( --surface-b );
+    font-family: var( --font-family );
+}
+
+
+.text-layout, h1, h2, h3, h4, h5, table, td, pre {
+    color: var(--text-color)
+}  
+
+.mr-2{
+    margin: 4px;
+}
