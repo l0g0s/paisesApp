@@ -55,10 +55,12 @@ The build artifacts will be stored in `dist/`. Use `--prod` for production build
 
 ## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `ng generate component componentName` to generate a new component.   
+You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`:  
 ```
 ng g m moduleName
 ng g c componentName --skipTests -is
+ng g pipe pipeName   --skipTests
 ng g s app/services/app --skipTests
 ```
 `--skipTests` skip test generation -  `-is` skip styles (css) generation
@@ -96,6 +98,18 @@ en por-pais.component.html
 buscar(){
     this.onEnter.emit( this.termino )
 }
+```
+## locale Language-Country
+Go to `app.module.ts` and add    
+```
+import localeEs from '@angular/common/locales/es'
+import { registerLocaleData } from '@angular/common'
+registerLocaleData(localeEs)
+...
+  providers: [
+    { provide: LOCALE_ID, useValue: 'es' }
+  ],
+
 ```
 
 ## ngIf
@@ -208,6 +222,8 @@ localStorage.setItem("historial",JSON.stringify(this._historial))
 this._historial = JSON.parse( localStorage.getItem("historial")! ) || []
 ```
 
+## array sort
+https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
 
 ## netlify server - servidor web
 https://www.netlify.com/

@@ -6,7 +6,9 @@ import { Country } from '../../interfaces/pais.interface';
 @Component({
   selector: 'app-por-pais',
   templateUrl: './por-pais.component.html',
-  styles: [`li{cursor:pointer;}`
+  styles: [`
+    li { cursor: pointer; }
+    `
   ]
 })
 export class PorPaisComponent {
